@@ -50,6 +50,10 @@ public class User {
     @JoinTable(name = "user_following" , joinColumns = {@JoinColumn(name = "user_id")} , inverseJoinColumns = {@JoinColumn(name = "following_id")})
     private List<User> followings = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "user_post" , joinColumns = {@JoinColumn(name = "user_id")} , inverseJoinColumns = {@JoinColumn(name = "post_id")})
+    private List<Post> likedPosts = new ArrayList<>();
+
     @Override
     public String toString() {
         return "User(" + id + "){" +
