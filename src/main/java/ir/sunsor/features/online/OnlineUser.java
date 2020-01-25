@@ -35,7 +35,7 @@ public class OnlineUser {
                 System.out.println("browse a file : ");
                 String type = scanner.next();
                 String time = new Date().toString();
-                Post post = new Post(null,title,content,type,time,0,user,null);
+                Post post = new Post(null,title,content,type,time,0,user,null,null);
                 postRepository.save(post);
             }
             if (command == 2){
