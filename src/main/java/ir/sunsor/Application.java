@@ -1,6 +1,7 @@
 package ir.sunsor;
 
 import ir.sunsor.entities.User;
+import ir.sunsor.features.user.SignIn;
 import ir.sunsor.features.user.SignUp;
 import ir.sunsor.repositories.CommentRepository;
 import ir.sunsor.repositories.PostRepository;
@@ -35,7 +36,28 @@ public class Application {
                 }
             }
 
-            if (command.equals("signin")) {}
+            if (command.equals("signin")) {
+                if(AuthenticationService.getInstance().getLoginUser() == null){
+                    System.out.println("enter username : ");
+                    String username = scanner.next();
+                    System.out.println("enter password : ");
+                    String password = scanner.next();
+                    SignIn signIn = new SignIn();
+                    User user = signIn.signIn(username,password);
+                    if (user == null){
+                        System.out.println("wrong username or password");
+                    }else {
+                        AuthenticationService.getInstance().setLoginUser(user);
+                        System.out.println("you are signed in");
+                        OnlineUser onlineUser = new OnlineUser();
+                        onlineUser.online(user);
+                    }
+                }else {
+                    System.out.println("signing out...");
+                    AuthenticationService.getInstance().setLoginUser(null);
+                    System.out.println("signed out successfully\nyou can sign in now");
+                }
+            }
             if (command.equals("exit")) {
                 AuthenticationService.getInstance().setLoginUser(null);
                 System.out.println("END");
