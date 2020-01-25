@@ -1,6 +1,7 @@
 package ir.sunsor;
 
 import ir.sunsor.entities.User;
+import ir.sunsor.features.online.OnlineUser;
 import ir.sunsor.features.user.SignIn;
 import ir.sunsor.features.user.SignUp;
 import ir.sunsor.repositories.CommentRepository;

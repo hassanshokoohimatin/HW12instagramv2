@@ -27,6 +27,9 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
+    @ManyToMany
+    private List<User> likers = new ArrayList<>();
+
     @Override
     public String toString() {
         return "Post{" + id + "}{" +
